@@ -67,18 +67,46 @@ class War {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
-  addViking(viking){
 
+  /*
+  const war1 = new War()
+  const war2 = new War()
+
+  war1 = {
+    vikingArmy : [],
+    saxonArmy : []
+  }
+
+   war2 = {
+    vikingArmy : [],
+    saxonArmy : []
+  }
+
+  */
+
+  addViking(viking){
+    this.vikingArmy.push(viking);
 
   }
 
   addSaxon(saxon){
+    this.saxonArmy.push(saxon);
     
   }
 
   vikingAttack(){
-    
+    let attackedSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let vikingAttacker = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    let attack = attackedSaxon.receiveDamage(vikingAttacker.attack());
+
+    if(attackedSaxon.health <= 0){
+      this.saxonArmy.splice(attackedSaxon,1);
+    }
+
+    return attack;
   }
+
+
 
   saxonAttack(){
     

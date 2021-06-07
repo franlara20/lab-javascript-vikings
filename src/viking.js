@@ -3,7 +3,13 @@ class Soldier {
   constructor(health, strength){
       this.health = health;
       this.strength = strength;
-
+// const solider1 = new Solider(50,5)
+// They are the same
+/* const soldier1 = {
+  health: 50,
+  strength: 5
+}
+*/
   }
   attack(){
     return this.strength;
@@ -24,11 +30,11 @@ class Viking extends Soldier {
 
   receiveDamage(damage){
     this.health -= damage;
-    if(this.health >= 1){
-      return(`${this.name} has received ${damage} points of damage`);
+    if(this.health > 0){
+      return `${this.name} has received ${damage} points of damage`;
     }
-    if(this.health === 0){
-      return(`$(this.name) has died in act of combat`);
+    else{
+      return `$(this.name) has died in act of combat`;
     }
   }
 
@@ -39,9 +45,18 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
+
+  constructor(health,strength){
+    super(health,strength)
+  }
   
   receiveDamage(damage){
     this.health -= damage;
+    if (this.health > 0){
+      return `A Saxon has received ${damage} points of damage`;
+    }else {
+      return `A Saxon has died in combat`;
+    }
 
   }
 }
